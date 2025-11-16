@@ -34,12 +34,23 @@ while True:
         print("Exiting... Thank you for using the ATM!")
         break  # Exit the loop
     elif choice == '5':
-        userinput = input('')
-        if userinput == pin:
-            print('pin you entered is correct')
-        else:
-            print('print you entered is incorrect')
+        while True:
+            userinput = input('input 0 to exit: ')
+            if userinput == pin and userinput.isdigit():
+                print('pin you entered is correct')
+            else:
+                print('print you entered is incorrect')
+            if int(userinput) == 0:
+                break
     elif choice == '6':
-        pin = input('enter your new pin: ')
+        pin_correct = False
+        while pin_correct == False:
+            new_pin = input('Enter new pin: ')
+            new_pin_len = len(new_pin)
+            if new_pin_len == 4 and new_pin.isdigit():
+                pin = new_pin
+                pin_correct = True
+            else:
+                print("Pin has to be 4 characters long and must consist of only numbers")
     else:
         print("Invalid option. Please try again.")
